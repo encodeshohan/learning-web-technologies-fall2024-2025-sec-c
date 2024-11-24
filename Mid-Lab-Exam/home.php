@@ -1,11 +1,11 @@
 <?php
     session_start();
-    if (!isset($_SESSION['status']) || $_SESSION['status'] !== true) {
+    if ($_SESSION['status'] != true) {
         header('Location: Login.html');
-        exit();
+        //exit();
     }
 
-    $user = $_SESSION['user'];
+    //$user = $_SESSION['user'];
     ?>
 
     <html>
@@ -24,7 +24,7 @@
                     Name:
                 </td>
                 <td>
-                    <?php echo $user['name']; ?>
+                    <?php echo $_SESSION['name']; ?>
                 </td>
             </tr>
             <tr>
@@ -32,24 +32,15 @@
                     Email:
                 </td>
                 <td>
-                <?php echo $user['email']; ?>
+                <?php echo $_SESSION['email']; ?>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <form method="post" action="home.php">
-                        <button type="submit" name="logout">Logout</button>
-                    </form>
 
-                    <?php
-                    if (isset($_POST['logout'])) {
-                        unset($_SESSION['status']); 
-                        unset($_SESSION['user']);
+                        <button type="submit" name="logout"><a href="Logout.php">Log Out</a></button>
+                    
 
-                        header('Location: Login.html');
-                        exit();
-                    }
-                    ?>
                 </td>
             </tr>
         </table>
