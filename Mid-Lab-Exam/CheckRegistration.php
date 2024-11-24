@@ -16,11 +16,12 @@ session_start();
             'password' => $password,
         ];
 
-        $_SESSION['users'][$name] = $user_data;
-        $_SESSION['user'] = $user_data;
-        $_SESSION['status'] = true;
+       // $_SESSION['users'][$name] = $user_data;
+        //$_SESSION['user'] = $user_data;
+        $_SESSION = $user_data;
+        
 
-        header('Location: home.php');
+        header('Location: Login.html');
         exit();
     } 
     else 
